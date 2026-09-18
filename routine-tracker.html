@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>दिनचर्या ट्रॅकर</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAE8UlEQVR4nO3dTU4bQRBA4bKvgdhZ4hhhEcRhwnG4DGLDNZA4TBaDTDOemt/urqru9+2ComClHtU9VuSc7i73Ut7l+aHCd+nK19tn6W9xKhcHQVRTKJT8cdCEobyVZIuDJlzJUkmGOMjCrYOJHIqDLELYnch597ekjCh2T2rP5iCLoLaukM2bgzLi2jq7bXFQRnSbJrj2WCGLxqw5YlZtDspoz5qZLsdBGa1anOxCHJTRtvn57n+fA82bi4O10YOZKatxUEY/tFlPx0EZvZmcOHcOqCbiYG306Xbu4zgoo2ej6XOsQPUrDtYG0gbYHFD9xMHawOBaApsDKuKA6jsOzhSkhh7YHFARB1Snu8s9ZwomsTmgIg6oiAOqMxcOaNgcUBEHVMQBFXFARRxQEQdUxAEVcUBFHFARB1TEARVxQEUcUBEHVMQBFXG48/H6bv0SvhGHL0MZTvogDkfSJjz0QRxe3NZg3gdxuGbbB3G4MBOBYR+nP//+Wn1vDFaO//HlqfQrGWFzGFu/GOqvEOKwtHXelfsgDjP7Jl2zD+KIp1ofxGHjyICr3UyJw0CIMoQ46otShhBHZebviG9CHPUcLIM3wZoVrgwhjhBMyhDiqCPQJTRFHMUFLUOIo7RYjycjxFFQxEtoijhKiV6GEEchDZQhxOGQkzKEOEqI+3gyQhyZNVOGEEdeoR9cbxFHNm1cQlPEkUd7ZQhxeOCzDCGOLFq6hKaI46hWyxDiOKjhMoQ4jmjswfUWcezU5OPJCHHs0UMZQhz1RSlDiGOHti+hKeLYpp8yxHMcDp8FHL6kopzG4erjOAedXEJTHuPw9nGc0mUZ4jAOhx/H2WcZ4i0ObQzmfewWtwxxFcd8AVZ9dPV4MuIljjUzqN9Hz2WIkzh8fhZn3LMsF/s4fH4WZ7eX0JRxHD4/i5MyBpZxHJmB253fTBliGMfx6Rbqo/NLaMosjix/j9n7oIyU5bHirQ/KGDG+kPrpw+0lxpD9o6yHPng8mWQfh1j3QRkaF3GIdR+7NVyG+IlDjPrgEjrDURxSvQ/KmOcrDqnYB48ni9zFIVX64BK6hsc4pHAflLGS0zikWB+UsZ7fOMTf821XZYjzOCR3HzyebBLj/7I3f7LosAzxvzkGfc7GXIw4xLSPbtMME4cYDanbMiRWHFJ9VD2XIeHikIoD67wMiRiHVBkbZUjQOKTw8ChjEDUOYYTlBY5DyvRBc1ex45Dcs6SMVPg4JN9EKWOkhTgkx1wp41Yjccix6VLGpHbikKUZP748EcEmTcUheh/Xr9/+BorRtBaHrBh/+kvKmNFgHLJi/MMXKWNejH8Jts/H6zvjP6LlOHBQm8cKsiAOqIgDKuKAijigIg6oiAMq4oCKOKAiDqiIA6rz19un9WuAU2wOqIgDKuKA6iwiXDtw6+vtk80BFXFA9R0HJwtSQw9sDqiIA6qfODhZMLiWwOaA6lccLA+kDbA5oBrHwfLo2Wj6E5uDPvp0O3eOFaim42B59GZy4urmoI9+aLOeO1boowczU+bOAdVCHCyPts3Pd3lz0EerFie76lihj/asmenp7nK//k+8PD8ceD1wYf2P+rYLKSskuk0T3Py0Qh9xbZ3dtmMlxRETyL4f6f3vc7BCotg9qf2b44oV4tbBH+AMcQxIxJUsez1bHFdUYijvWZ8/jisqqabQ/e8/UxvH/oyd0qoAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAE8UlEQVR4nO3dTU4bQRBA4bKvgdhZ4hhhEcRhwnG4DGLDNZA4TBaDTDOemt/urqru9+2ComClHtU9VuSc7i73Ut7l+aHCd+nK19tn6W9xKhcHQVRTKJT8cdCEobyVZIuDJlzJUkmGOMjCrYOJHIqDLELYnch597ekjCh2T2rP5iCLoLaukM2bgzLi2jq7bXFQRnSbJrj2WCGLxqw5YlZtDspoz5qZLsdBGa1anOxCHJTRtvn57n+fA82bi4O10YOZKatxUEY/tFlPx0EZvZmcOHcOqCbiYG306Xbu4zgoo2ej6XOsQPUrDtYG0gbYHFD9xMHawOBaApsDKuKA6jsOzhSkhh7YHFARB1Snu8s9ZwomsTmgIg6oiAOqMxcOaNgcUBEHVMQBFXFARRxQEQdUxAEVcUBFHFARB1TEARVxQEUcUBEHVMQBFXG48/H6bv0SvhGHL0MZTvogDkfSJjz0QRxe3NZg3gdxuGbbB3G4MBOBYR+nP//+Wn1vDFaO//HlqfQrGWFzGFu/GOqvEOKwtHXelfsgDjP7Jl2zD+KIp1ofxGHjyICr3UyJw0CIMoQ46otShhBHZebviG9CHPUcLIM3wZoVrgwhjhBMyhDiqCPQJTRFHMUFLUOIo7RYjycjxFFQxEtoijhKiV6GEEchDZQhxOGQkzKEOEqI+3gyQhyZNVOGEEdeoR9cbxFHNm1cQlPEkUd7ZQhxeOCzDCGOLFq6hKaI46hWyxDiOKjhMoQ4jmjswfUWcezU5OPJCHHs0UMZQhz1RSlDiGOHti+hKeLYpp8yxHMcDp8FHL6kopzG4erjOAedXEJTHuPw9nGc0mUZ4jAOhx/H2WcZ4i0ObQzmfewWtwxxFcd8AVZ9dPV4MuIljjUzqN9Hz2WIkzh8fhZn3LMsF/s4fH4WZ7eX0JRxHD4/i5MyBpZxHJmB253fTBliGMfx6Rbqo/NLaMosjix/j9n7oIyU5bHirQ/KGDG+kPrpw+0lxpD9o6yHPng8mWQfh1j3QRkaF3GIdR+7NVyG+IlDjPrgEjrDURxSvQ/KmOcrDqnYB48ni9zFIVX64BK6hsc4pHAflLGS0zikWB+UsZ7fOMTf821XZYjzOCR3HzyebBLj/7I3f7LosAzxvzkGfc7GXIw4xLSPbtMME4cYDanbMiRWHFJ9VD2XIeHikIoD67wMiRiHVBkbZUjQOKTw8ChjEDUOYYTlBY5DyvRBc1ex45Dcs6SMVPg4JN9EKWOkhTgkx1wp41Yjccix6VLGpHbikKUZP748EcEmTcUheh/Xr9/+BorRtBaHrBh/+kvKmNFgHLJi/MMXKWNejH8Jts/H6zvjP6LlOHBQm8cKsiAOqIgDKuKAijigIg6oiAMq4oCKOKAiDqiIA6rz19un9WuAU2wOqIgDKuKA6iwiXDtw6+vtk80BFXFA9R0HJwtSQw9sDqiIA6qfODhZMLiWwOaA6lccLA+kDbA5oBrHwfLo2Wj6E5uDPvp0O3eOFaim42B59GZy4urmoI9+aLOeO1boowczU+bOAdVCHCyPts3Pd3lz0EerFie76lihj/asmenp7nK//k+8PD8ceD1wYf2P+rYLKSskuk0T3Py0Qh9xbZ3dtmMlxRETyL4f6f3vc7BCotg9qf2b44oV4tbBH+AMcQxIxJUsez1bHFdUYijvWZ8/jisqqabQ/e8/UxvH/oyd0qoAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="दिनचर्या">
+<meta name="theme-color" content="#3F6B44">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EEF1EA;
+    --bg-alt: #E4E9DE;
+    --card: #FFFFFF;
+    --text: #1B2A22;
+    --text-dim: #5B6B60;
+    --border: #D3DACB;
+    --dawn: #DB9A3C;
+    --dawn-soft: #F3DFB4;
+    --forest: #3F6B44;
+    --forest-soft: #CFE2CE;
+    --brick: #B3552F;
+    --brick-soft: #EFCDB8;
+    --shadow: 0 1px 2px rgba(27,42,34,0.06);
+    --radius: 10px;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #101710;
+      --bg-alt: #17201A;
+      --card: #1B241D;
+      --text: #E8EDE4;
+      --text-dim: #92A090;
+      --border: #2B362D;
+      --dawn: #E3A94F;
+      --dawn-soft: #4A3A1C;
+      --forest: #6FA773;
+      --forest-soft: #223A26;
+      --brick: #CC7A50;
+      --brick-soft: #402719;
+      --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101710;
+    --bg-alt: #17201A;
+    --card: #1B241D;
+    --text: #E8EDE4;
+    --text-dim: #92A090;
+    --border: #2B362D;
+    --dawn: #E3A94F;
+    --dawn-soft: #4A3A1C;
+    --forest: #6FA773;
+    --forest-soft: #223A26;
+    --brick: #CC7A50;
+    --brick-soft: #402719;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans Devanagari', 'Work Sans', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    padding-bottom: 32px;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 0 14px; }
+
+  header.top {
+    padding: 20px 14px 8px;
+    text-align: center;
+  }
+  header.top h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 2px;
+    letter-spacing: 0.2px;
+  }
+  header.top p {
+    margin: 0;
+    font-size: 12.5px;
+    color: var(--text-dim);
+  }
+
+  nav.tabs {
+    display: flex;
+    gap: 6px;
+    margin: 16px 0 14px;
+    background: var(--bg-alt);
+    padding: 4px;
+    border-radius: 999px;
+  }
+  nav.tabs button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 9px 6px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-dim);
+    font-family: inherit;
+  }
+  nav.tabs button.active {
+    background: var(--card);
+    color: var(--text);
+    box-shadow: var(--shadow);
+  }
+
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* date nav */
+  .datebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .datebar button.arrow {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .datebar .datelabel {
+    text-align: center;
+    flex: 1;
+  }
+  .datebar .datelabel .day {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .datebar .datelabel .today-pill {
+    display: inline-block;
+    margin-top: 2px;
+    font-size: 11px;
+    color: var(--forest);
+    font-weight: 600;
+  }
+  .datebar .daytype {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 1px;
+  }
+
+  .progress-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ring {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    background: conic-gradient(var(--forest) calc(var(--pct) * 1%), var(--bg-alt) 0);
+  }
+  .ring span {
+    background: var(--card);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .progress-card .ptext { font-size: 13px; color: var(--text-dim); }
+  .progress-card .ptext b { color: var(--text); font-size: 14.5px; }
+
+  ul.tasklist { list-style: none; margin: 0; padding: 0; }
+  ul.tasklist li {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border-left: 4px solid var(--cat-color, var(--border));
+  }
+  ul.tasklist li .box {
+    width: 24px; height: 24px;
+    border-radius: 7px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: transparent;
+  }
+  ul.tasklist li.done .box {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: white;
+  }
+  ul.tasklist li.done .label { text-decoration: line-through; color: var(--text-dim); }
+  ul.tasklist li .meta { flex: 1; min-width: 0; }
+  ul.tasklist li .time {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+  ul.tasklist li .label {
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+
+  /* report view */
+  .month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .month-nav .mtitle { font-size: 15.5px; font-weight: 700; }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 18px;
+  }
+  .cal-grid .dow {
+    font-size: 10.5px;
+    text-align: center;
+    color: var(--text-dim);
+    font-weight: 600;
+    padding-bottom: 2px;
+  }
+  .cal-cell {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dim);
+    background: var(--bg-alt);
+    border: 1px solid transparent;
+  }
+  .cal-cell.blank { background: transparent; }
+  .cal-cell.future { opacity: 0.45; }
+  .cal-cell.none { background: var(--bg-alt); color: var(--text-dim); }
+  .cal-cell.partial { background: var(--dawn-soft); color: var(--text); }
+  .cal-cell.full { background: var(--forest-soft); color: var(--text); }
+  .cal-cell.today-marker { border-color: var(--dawn); }
+
+  .stat-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .stat-card h3 {
+    margin: 0 0 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+  }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row .v { font-weight: 700; }
+
+  .cat-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 5px 0;
+  }
+  .cat-row .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .cat-row .bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: var(--bg-alt);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .cat-row .bar { height: 100%; background: var(--forest); }
+  .cat-row .pctv { font-size: 11.5px; color: var(--text-dim); width: 32px; text-align: right; }
+
+  button.dl {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: none;
+    background: var(--dawn);
+    color: #241503;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: inherit;
+    margin-top: 4px;
+  }
+  button.dl:active { opacity: 0.85; }
+  .hint {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  .empty-note {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 6px 10px 16px;
+  }
+
+  /* install banner */
+  .install-banner {
+    background: var(--dawn-soft);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    position: relative;
+  }
+  .install-banner b { display:block; font-size: 13.5px; margin-bottom: 3px; }
+  .install-banner .close {
+    position: absolute;
+    top: 8px; right: 10px;
+    background: none; border: none;
+    font-size: 15px; color: var(--text-dim);
+    padding: 2px 6px;
+  }
+  .install-banner .steps { margin-top: 6px; }
+  .install-banner .steps span { font-weight: 700; }
+
+  /* streak badge */
+  .streak-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--dawn-soft), var(--card));
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .streak-badge .flame { font-size: 22px; }
+  .streak-badge .num { font-size: 17px; font-weight: 800; }
+  .streak-badge .txt { font-size: 12px; color: var(--text-dim); }
+
+  /* next task card */
+  .next-card {
+    background: var(--forest);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+  .next-card .eyebrow {
+    font-size: 11.5px;
+    opacity: 0.85;
+    margin-bottom: 4px;
+  }
+  .next-card .big-time {
+    font-size: 13.5px;
+    opacity: 0.9;
+    font-weight: 600;
+  }
+  .next-card .big-label {
+    font-size: 21px;
+    font-weight: 700;
+    margin: 2px 0 12px;
+  }
+  .next-card button.donebtn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    color: var(--forest);
+    font-weight: 700;
+    font-size: 14.5px;
+    font-family: inherit;
+  }
+  .next-card.alldone { background: var(--dawn); color: #241503; }
+  .next-card.alldone button.donebtn { color: var(--dawn); }
+
+  /* backup buttons */
+  .backup-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .backup-row button {
+    flex: 1;
+    padding: 11px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 12.5px;
+    font-family: inherit;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>दिनचर्या ट्रॅकर</h1>
+    <p>रोजची वेळापत्रक-चौकट पूर्ण करा, महिन्याचा अहवाल बघा</p>
+  </header>
+
+  <nav class="tabs">
+    <button id="tabChecklistBtn" class="active">✓ चेकलिस्ट</button>
+    <button id="tabReportBtn">📊 अहवाल</button>
+  </nav>
+
+  <section id="viewChecklist" class="view active">
+    <div id="installBanner" class="install-banner" style="display:none;">
+      <button class="close" id="installBannerClose">✕</button>
+      <b>📱 होम स्क्रीनवर आयकॉन बनवा</b>
+      हे ॲप बाहेर असतानाही एका टॅपमध्ये उघडेल, ब्राउझर उघडायची गरज नाही.
+      <div class="steps">Safari मध्ये खालचं <span>Share ⬆️</span> बटण दाबा → <span>"Add to Home Screen"</span> निवडा → <span>Add</span> दाबा.</div>
+    </div>
+
+    <div id="streakBadge" class="streak-badge" style="display:none;">
+      <div class="flame">🔥</div>
+      <div>
+        <div class="num" id="streakNum">0 दिवस</div>
+        <div class="txt">सलग १००% पूर्ण दिवस</div>
+      </div>
+    </div>
+
+    <div class="datebar">
+      <button class="arrow" id="prevDay">‹</button>
+      <div class="datelabel">
+        <div class="day" id="dateDayLabel">—</div>
+        <div class="daytype" id="dateTypeLabel">—</div>
+      </div>
+      <button class="arrow" id="nextDay">›</button>
+    </div>
+
+    <div id="nextTaskCard" class="next-card" style="display:none;">
+      <div class="eyebrow">⚡ आत्ता करायचं</div>
+      <div class="big-time" id="nextTaskTime">—</div>
+      <div class="big-label" id="nextTaskLabel">—</div>
+      <button class="donebtn" id="nextTaskDoneBtn">✓ पूर्ण झालं</button>
+    </div>
+
+    <div class="progress-card">
+      <div class="ring" id="progressRing" style="--pct:0">
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="ptext">आजचं पूर्ण झालेलं: <b id="progressCount">0/0</b><br>पूर्ण यादीत टॅप करूनही खूण करता येते</div>
+    </div>
+
+    <ul class="tasklist" id="taskList"></ul>
+  </section>
+
+  <section id="viewReport" class="view">
+    <div class="month-nav">
+      <button class="arrow" id="prevMonth">‹</button>
+      <div class="mtitle" id="monthTitle">—</div>
+      <button class="arrow" id="nextMonth">›</button>
+    </div>
+
+    <div class="cal-grid" id="calGrid"></div>
+
+    <div class="stat-card">
+      <h3>महिन्याचा सारांश</h3>
+      <div class="stat-row"><span>ट्रॅक केलेले दिवस</span><span class="v" id="statDays">0</span></div>
+      <div class="stat-row"><span>सरासरी पूर्णता</span><span class="v" id="statAvg">0%</span></div>
+      <div class="stat-row"><span>100% पूर्ण झालेले दिवस</span><span class="v" id="statFull">0</span></div>
+      <div class="stat-row"><span>एकूण पूर्ण झालेले टास्क</span><span class="v" id="statTasks">0</span></div>
+    </div>
+
+    <div class="stat-card">
+      <h3>श्रेणीनुसार सातत्य</h3>
+      <div id="catBreakdown"></div>
+    </div>
+
+    <button class="dl" id="downloadBtn">📥 महिन्याचा अहवाल डाउनलोड करा (CSV)</button>
+
+    <div class="stat-card">
+      <h3>बॅकअप</h3>
+      <div class="backup-row">
+        <button id="backupSaveBtn">📤 बॅकअप जतन करा</button>
+        <button id="backupLoadBtn">📥 बॅकअप परत आणा</button>
+      </div>
+      <input type="file" id="backupFileInput" accept="application/json" style="display:none;">
+    </div>
+
+    <p class="hint">ही माहिती फक्त तुमच्या ह्या फोन/ब्राऊझरमध्ये साठवली जाते — फोन बदलण्यापूर्वी किंवा महिन्याच्या शेवटी बॅकअप जतन करा.</p>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var CAT_COLORS = {
+    wake:   "#DB9A3C",
+    study:  "#3F6B44",
+    prep:   "#8C7A5B",
+    gym:    "#B3552F",
+    commute:"#6B7A8C",
+    office: "#4A5B7A",
+    family: "#B3557A",
+    relax:  "#5B8C7A",
+    sleep:  "#4A4A6B"
+  };
+  var CAT_LABELS = {
+    wake:"उठणे", study:"अभ्यास", prep:"तयारी", gym:"जिम",
+    commute:"प्रवास", office:"ऑफिस", family:"कुटुंब", relax:"आराम", sleep:"झोप"
+  };
+
+  var SCHEDULE = {
+    weekday: [
+      {t:"5:00", l:"उठणे", c:"wake"},
+      {t:"5:10–5:40", l:"Reading", c:"study"},
+      {t:"5:40–5:50", l:"Snack + तयारी", c:"prep"},
+      {t:"5:50–6:00", l:"Gym ला जाणे", c:"gym"},
+      {t:"6:00–7:30", l:"Gym", c:"gym"},
+      {t:"7:30–8:00", l:"आंघोळ + नाश्ता", c:"prep"},
+      {t:"8:00–9:30", l:"Commute", c:"commute"},
+      {t:"9:30–4:00", l:"Office", c:"office"},
+      {t:"4:00–5:45", l:"Commute", c:"commute"},
+      {t:"5:45–7:30", l:"Family + dinner", c:"family"},
+      {t:"7:30–8:15", l:"Focused Study", c:"study"},
+      {t:"8:15–10:00", l:"Relax + घरची कामं", c:"relax"},
+      {t:"10:00–10:30", l:"Sleep prep", c:"prep"},
+      {t:"10:30", l:"झोप", c:"sleep"}
+    ],
+    saturday: [
+      {t:"5:00", l:"उठणे", c:"wake"},
+      {t:"5:10–5:40", l:"Deep Study", c:"study"},
+      {t:"5:40–5:50", l:"Snack + तयारी", c:"prep"},
+      {t:"5:50–6:00", l:"Gym ला जाणे", c:"gym"},
+      {t:"6:00–7:30", l:"Gym", c:"gym"},
+      {t:"7:30–8:00", l:"आंघोळ + नाश्ता", c:"prep"},
+      {t:"5:45–7:30", l:"Family + Dinner", c:"family"},
+      {t:"7:30–8:15", l:"Deep Study", c:"study"},
+      {t:"8:15–10:00", l:"Relax", c:"relax"},
+      {t:"10:00–10:30", l:"Sleep prep", c:"prep"},
+      {t:"10:30", l:"Sleep", c:"sleep"}
+    ],
+    sunday: [
+      {t:"5:00", l:"उठणे", c:"wake"},
+      {t:"5:10–5:40", l:"Reading", c:"study"},
+      {t:"5:40–5:50", l:"आराम", c:"relax"},
+      {t:"6:00–7:30", l:"Rest", c:"relax"},
+      {t:"7:30–8:00", l:"Relaxed breakfast", c:"prep"},
+      {t:"5:45–7:30", l:"Family + Dinner", c:"family"},
+      {t:"7:30–8:15", l:"Deep Study", c:"study"},
+      {t:"8:15–10:00", l:"Relax", c:"relax"},
+      {t:"10:00–10:30", l:"Sleep prep", c:"prep"},
+      {t:"10:30", l:"Sleep", c:"sleep"}
+    ]
+  };
+
+  var DOW_MR = ["रवि","सोम","मंगळ","बुध","गुरु","शुक्र","शनि"];
+  var MONTHS_MR = ["जाने","फेब्रु","मार्च","एप्रिल","मे","जून","जुलै","ऑग","सप्टें","ऑक्टो","नोव्हें","डिसें"];
+
+  var STORAGE_KEY = "routineTrackerV1";
+
+  function loadData(){
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch(e){ return {}; }
+  }
+  function saveData(data){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e){}
+  }
+
+  var store = loadData();
+
+  function pad(n){ return n < 10 ? "0"+n : ""+n; }
+  function toKey(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+  function dayType(d){
+    var wd = d.getDay();
+    if (wd === 0) return "sunday";
+    if (wd === 6) return "saturday";
+    return "weekday";
+  }
+  function sameDate(a,b){ return toKey(a) === toKey(b); }
+
+  var today = new Date();
+  today.setHours(0,0,0,0);
+  var selectedDate = new Date(today);
+  var reportMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+  // ---------- Streak ----------
+  function computeStreak(){
+    var count = 0;
+    var todayStats = dayStats(today);
+    var todayPct = todayStats ? todayStats.pct : 0;
+    if (todayPct >= 100) count++;
+    var d = new Date(today);
+    d.setDate(d.getDate() - 1);
+    while (true){
+      var stats = dayStats(d);
+      var pct = stats ? stats.pct : 0;
+      if (pct >= 100){ count++; d.setDate(d.getDate() - 1); }
+      else break;
+    }
+    return count;
+  }
+
+  function renderStreak(){
+    var n = computeStreak();
+    var badge = document.getElementById("streakBadge");
+    if (n > 0){
+      badge.style.display = "flex";
+      document.getElementById("streakNum").textContent = n + (n===1 ? " दिवस" : " दिवस");
+    } else {
+      badge.style.display = "none";
+    }
+  }
+
+  // ---------- Install banner ----------
+  function isStandalone(){
+    return window.navigator.standalone === true ||
+      (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  }
+  function renderInstallBanner(){
+    var el = document.getElementById("installBanner");
+    var dismissed = false;
+    try { dismissed = localStorage.getItem("installBannerDismissedV1") === "1"; } catch(e){}
+    if (isStandalone() || dismissed){
+      el.style.display = "none";
+    } else {
+      el.style.display = "block";
+    }
+  }
+  document.getElementById("installBannerClose").addEventListener("click", function(){
+    try { localStorage.setItem("installBannerDismissedV1", "1"); } catch(e){}
+    document.getElementById("installBanner").style.display = "none";
+  });
+
+  // ---------- Checklist view ----------
+  function renderNextTaskCard(tasks, dayData, key){
+    var card = document.getElementById("nextTaskCard");
+    if (!sameDate(selectedDate, today)){
+      card.style.display = "none";
+      return;
+    }
+    var nextIdx = -1;
+    for (var i=0; i<tasks.length; i++){
+      if (!dayData[i]){ nextIdx = i; break; }
+    }
+    card.style.display = "block";
+    if (nextIdx === -1){
+      card.className = "next-card alldone";
+      document.getElementById("nextTaskTime").textContent = "🎉";
+      document.getElementById("nextTaskLabel").textContent = "आजचे सगळे टास्क पूर्ण!";
+      document.getElementById("nextTaskDoneBtn").style.display = "none";
+    } else {
+      card.className = "next-card";
+      document.getElementById("nextTaskTime").textContent = tasks[nextIdx].t;
+      document.getElementById("nextTaskLabel").textContent = tasks[nextIdx].l;
+      var btn = document.getElementById("nextTaskDoneBtn");
+      btn.style.display = "block";
+      btn.onclick = function(){
+        var d = store[key] || {};
+        d[nextIdx] = true;
+        store[key] = d;
+        saveData(store);
+        renderChecklist();
+      };
+    }
+  }
+
+  function renderChecklist(){
+    var key = toKey(selectedDate);
+    var dt = dayType(selectedDate);
+    var tasks = SCHEDULE[dt];
+    var dayData = store[key] || {};
+
+    renderInstallBanner();
+    renderStreak();
+
+    document.getElementById("dateDayLabel").textContent =
+      DOW_MR[selectedDate.getDay()] + "वार, " + selectedDate.getDate() + " " + MONTHS_MR[selectedDate.getMonth()] + " " + selectedDate.getFullYear() +
+      (sameDate(selectedDate, today) ? "  •  आज" : "");
+    document.getElementById("dateTypeLabel").textContent =
+      dt === "weekday" ? "कामाचा दिवस" : (dt === "saturday" ? "शनिवार वेळापत्रक" : "रविवार वेळापत्रक");
+
+    renderNextTaskCard(tasks, dayData, key);
+
+    var ul = document.getElementById("taskList");
+    ul.innerHTML = "";
+    var doneCount = 0;
+    tasks.forEach(function(task, idx){
+      var done = !!dayData[idx];
+      if (done) doneCount++;
+      var li = document.createElement("li");
+      li.className = done ? "done" : "";
+      li.style.setProperty("--cat-color", CAT_COLORS[task.c] || "#ccc");
+      li.innerHTML =
+        '<div class="box">'+(done?'✓':'')+'</div>' +
+        '<div class="meta"><div class="time">'+task.t+'</div><div class="label">'+task.l+'</div></div>';
+      li.addEventListener("click", function(){
+        var d = store[key] || {};
+        d[idx] = !d[idx];
+        store[key] = d;
+        saveData(store);
+        renderChecklist();
+      });
+      ul.appendChild(li);
+    });
+
+    var pct = tasks.length ? Math.round((doneCount / tasks.length) * 100) : 0;
+    document.getElementById("progressRing").style.setProperty("--pct", pct);
+    document.getElementById("progressPct").textContent = pct + "%";
+    document.getElementById("progressCount").textContent = doneCount + "/" + tasks.length;
+  }
+
+  document.getElementById("prevDay").addEventListener("click", function(){
+    selectedDate.setDate(selectedDate.getDate() - 1);
+    renderChecklist();
+  });
+  document.getElementById("nextDay").addEventListener("click", function(){
+    selectedDate.setDate(selectedDate.getDate() + 1);
+    renderChecklist();
+  });
+
+  // ---------- Report view ----------
+  function dayStats(dateObj){
+    var key = toKey(dateObj);
+    var dt = dayType(dateObj);
+    var tasks = SCHEDULE[dt];
+    var dayData = store[key];
+    if (!dayData) return null;
+    var done = 0;
+    tasks.forEach(function(_, idx){ if (dayData[idx]) done++; });
+    return { done: done, total: tasks.length, pct: tasks.length ? Math.round(done/tasks.length*100) : 0, dt: dt, data: dayData };
+  }
+
+  function renderReport(){
+    var y = reportMonth.getFullYear(), m = reportMonth.getMonth();
+    document.getElementById("monthTitle").textContent = MONTHS_MR[m] + " " + y;
+
+    var grid = document.getElementById("calGrid");
+    grid.innerHTML = "";
+    ["रवि","सोम","मंगळ","बुध","गुरु","शुक्र","शनि"].forEach(function(d){
+      var el = document.createElement("div");
+      el.className = "dow";
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    var firstDay = new Date(y, m, 1);
+    var startWd = firstDay.getDay();
+    var daysInMonth = new Date(y, m+1, 0).getDate();
+
+    for (var i=0; i<startWd; i++){
+      var blank = document.createElement("div");
+      blank.className = "cal-cell blank";
+      grid.appendChild(blank);
+    }
+
+    var trackedDays = 0, pctSum = 0, fullDays = 0, totalTasksDone = 0;
+    var catDone = {}, catTotal = {};
+    Object.keys(CAT_LABELS).forEach(function(c){ catDone[c]=0; catTotal[c]=0; });
+
+    for (var day=1; day<=daysInMonth; day++){
+      var d = new Date(y, m, day);
+      var cell = document.createElement("div");
+      var stats = dayStats(d);
+      var isFuture = d > today;
+      var cls = "cal-cell";
+      if (isFuture) cls += " future none";
+      else if (!stats) cls += " none";
+      else if (stats.pct >= 100) cls += " full";
+      else if (stats.pct > 0) cls += " partial";
+      else cls += " none";
+      if (sameDate(d, today)) cls += " today-marker";
+      cell.className = cls;
+      cell.textContent = day;
+      cell.addEventListener("click", function(dd){
+        return function(){
+          selectedDate = new Date(dd);
+          renderChecklist();
+          switchTab("checklist");
+        };
+      }(d));
+      grid.appendChild(cell);
+
+      if (stats && !isFuture){
+        trackedDays++;
+        pctSum += stats.pct;
+        totalTasksDone += stats.done;
+        if (stats.pct >= 100) fullDays++;
+        var tasks = SCHEDULE[stats.dt];
+        tasks.forEach(function(task, idx){
+          catTotal[task.c] = (catTotal[task.c]||0) + 1;
+          if (stats.data[idx]) catDone[task.c] = (catDone[task.c]||0) + 1;
+        });
+      }
+    }
+
+    document.getElementById("statDays").textContent = trackedDays;
+    document.getElementById("statAvg").textContent = trackedDays ? Math.round(pctSum/trackedDays) + "%" : "0%";
+    document.getElementById("statFull").textContent = fullDays;
+    document.getElementById("statTasks").textContent = totalTasksDone;
+
+    var catWrap = document.getElementById("catBreakdown");
+    catWrap.innerHTML = "";
+    if (trackedDays === 0){
+      catWrap.innerHTML = '<p class="empty-note">या महिन्यात अजून काही नोंद नाही.</p>';
+    } else {
+      Object.keys(CAT_LABELS).forEach(function(c){
+        if (!catTotal[c]) return;
+        var pct = Math.round((catDone[c]/catTotal[c])*100);
+        var row = document.createElement("div");
+        row.className = "cat-row";
+        row.innerHTML =
+          '<span class="dot" style="background:'+CAT_COLORS[c]+'"></span>' +
+          '<span style="width:56px;flex-shrink:0;">'+CAT_LABELS[c]+'</span>' +
+          '<span class="bar-wrap"><span class="bar" style="width:'+pct+'%;background:'+CAT_COLORS[c]+'"></span></span>' +
+          '<span class="pctv">'+pct+'%</span>';
+        catWrap.appendChild(row);
+      });
+    }
+  }
+
+  document.getElementById("prevMonth").addEventListener("click", function(){
+    reportMonth.setMonth(reportMonth.getMonth()-1);
+    renderReport();
+  });
+  document.getElementById("nextMonth").addEventListener("click", function(){
+    reportMonth.setMonth(reportMonth.getMonth()+1);
+    renderReport();
+  });
+
+  // ---------- CSV download ----------
+  function buildCsv(){
+    var y = reportMonth.getFullYear(), m = reportMonth.getMonth();
+    var daysInMonth = new Date(y, m+1, 0).getDate();
+    var lines = ["Date,DayType,TasksCompleted,TotalTasks,CompletionPct"];
+    for (var day=1; day<=daysInMonth; day++){
+      var d = new Date(y, m, day);
+      if (d > today) continue;
+      var stats = dayStats(d);
+      var key = toKey(d);
+      if (stats){
+        lines.push([key, stats.dt, stats.done, stats.total, stats.pct+"%"].join(","));
+      } else {
+        lines.push([key, dayType(d), 0, SCHEDULE[dayType(d)].length, "0%"].join(","));
+      }
+    }
+    return lines.join("\n");
+  }
+
+  async function saveFile(filename, data){
+    try {
+      if (window.claude && typeof window.claude.use === "function"){
+        var downloads = await window.claude.use("downloads");
+        if (downloads){
+          await downloads.save({ filename: filename, data: data });
+          return true;
+        }
+      }
+    } catch(e){}
+    try {
+      var blob = new Blob([data], {type: filename.endsWith(".json") ? "application/json" : "text/csv"});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+      return true;
+    } catch(e2){
+      return false;
+    }
+  }
+
+  document.getElementById("downloadBtn").addEventListener("click", async function(){
+    var csv = buildCsv();
+    var y = reportMonth.getFullYear(), m = reportMonth.getMonth()+1;
+    var filename = "routine-report-" + y + "-" + pad(m) + ".csv";
+    var ok = await saveFile(filename, csv);
+    if (!ok) alert("डाउनलोड शक्य झाले नाही. कृपया पुन्हा प्रयत्न करा.");
+  });
+
+  // ---------- Backup / Restore ----------
+  document.getElementById("backupSaveBtn").addEventListener("click", async function(){
+    var json = JSON.stringify(store, null, 2);
+    var d = new Date();
+    var filename = "routine-backup-" + d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()) + ".json";
+    var ok = await saveFile(filename, json);
+    if (!ok) alert("बॅकअप जतन शक्य झाला नाही. कृपया पुन्हा प्रयत्न करा.");
+  });
+
+  document.getElementById("backupLoadBtn").addEventListener("click", function(){
+    document.getElementById("backupFileInput").click();
+  });
+
+  document.getElementById("backupFileInput").addEventListener("change", function(e){
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(evt){
+      try {
+        var parsed = JSON.parse(evt.target.result);
+        if (typeof parsed !== "object" || parsed === null) throw new Error("invalid");
+        var proceed = confirm("बॅकअप फाईलमधली माहिती सध्याच्या माहितीत मिसळली जाईल. पुढे जायचं का?");
+        if (!proceed) return;
+        store = Object.assign({}, store, parsed);
+        saveData(store);
+        renderChecklist();
+        renderReport();
+        alert("बॅकअप यशस्वीरित्या परत आणला.");
+      } catch(err){
+        alert("ही फाईल वाचता आली नाही. कृपया योग्य बॅकअप (.json) फाईल निवडा.");
+      }
+      e.target.value = "";
+    };
+    reader.readAsText(file);
+  });
+
+  // ---------- Tabs ----------
+  function switchTab(name){
+    var isChecklist = name === "checklist";
+    document.getElementById("viewChecklist").classList.toggle("active", isChecklist);
+    document.getElementById("viewReport").classList.toggle("active", !isChecklist);
+    document.getElementById("tabChecklistBtn").classList.toggle("active", isChecklist);
+    document.getElementById("tabReportBtn").classList.toggle("active", !isChecklist);
+    if (!isChecklist) renderReport();
+  }
+  document.getElementById("tabChecklistBtn").addEventListener("click", function(){ switchTab("checklist"); });
+  document.getElementById("tabReportBtn").addEventListener("click", function(){ switchTab("report"); });
+
+  renderChecklist();
+})();
+</script>
+</body>
+</html>
